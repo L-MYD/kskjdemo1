@@ -1,0 +1,53 @@
+#spring:
+#  datasource:
+#    username: sa
+#    password: 123456
+#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#    url: jdbc:sqlserver://localhost:1433;DatabaseName=kswms;encrypt=true;trustServerCertificate=true
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/yzwcs?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf-8&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #username: root
+    #password: kb123456
+    username: root
+    password: 123456
+
+  # 添加AOP配置
+  aop:
+    auto: true           # 自动开启AOP
+    proxy-target-class: true  # 使用CGLIB代理，支持类代理
+
+#mybatis:
+#  configuration:
+#    map-underscore-to-camel-case: false
+#  type-aliases-package: com.kskj.pojo
+mybatis:
+  configuration:
+    use-actual-param-name: true
+    map-underscore-to-camel-case: false
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    cache-enabled: false  # 临时关闭缓存
+  type-aliases-package: com.kskj.pojo
+  mapper-locations: classpath:mapper/*.xml
+server:
+  port: 8090
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
+
+logging:
+  level:
+    org.apache.ibatis: WARN
+    org.springframework.jdbc: WARN
+#task:
+#  config:
+#    max-sub-tasks:
+#      入成品库任务: 3
+#      入待灭菌区任务: 3
+#      入解析库任务: 3
+#    default-max-sub-tasks: 1

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kskj.mapper.AislesMapper">
+    <select id="findLikeBywmsreference" resultType="com.kskj.pojo.Aisles">
+        SELECT * FROM wcs_aisles
+        WHERE wmsreferenceone LIKE CONCAT('%', #{wmsreference}, '%')
+           OR wmsreferencetwo LIKE CONCAT('%', #{wmsreference}, '%')
+        LIMIT 1
+    </select>
+    <select id="findOneByaislename" resultType="com.kskj.pojo.Aisles">
+        select *
+        from wcs_aisles where aislename=#{aislename};
+    </select>
+</mapper>

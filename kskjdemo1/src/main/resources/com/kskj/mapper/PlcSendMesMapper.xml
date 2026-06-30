@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kskj.mapper.PlcSendMesMapper">
+    <insert id="add">
+        INSERT INTO `wcs_plc-sendmes` (
+            PlcIp,
+            DbData,
+            MessType,
+            UnitID,
+            FromLocation,
+            ToLocation,
+            UnitHigh,
+            UnitWeigh,
+            ReasonCode,
+            CanWrite
+        ) VALUES (
+                     #{PlcIp},
+                     #{DbData},
+                     #{MessType},
+                     #{UnitID},
+                     #{FromLocation},
+                     #{ToLocation},
+                     #{UnitHigh},
+                     #{UnitWeigh},
+                     #{ReasonCode},
+                     #{CanWrite}
+                 )
+    </insert>
+</mapper>

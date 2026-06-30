@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kskj.mapper.DeviceStateMapper">
+
+
+    <select id="findDevice" resultType="com.kskj.domian.DeviceState">
+        select a.*,b.faultDesc from deviceState a left join faultCode b on a.faultNo = b.faultNo
+    </select>
+    <select id="findByProperty" resultType="com.kskj.domian.DeviceState">
+
+    </select>
+</mapper>

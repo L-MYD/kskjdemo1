@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kskj.mapper.DbBackupMapper">
+    <insert id="add">
+        insert into dbBackup values (#{fileName},#{createTime},#{updateTime},#{remark},#{id})
+    </insert>
+    <!--    <sql id="query" >-->
+<!--        <where>-->
+<!--            <if test="name!=null and name!=''">-->
+<!--                and name=#{name}-->
+<!--            </if>-->
+<!--            <if test="sex!=null ">-->
+<!--                and sex=#{sex}-->
+<!--            </if>-->
+<!--            <if test="address!=null ">-->
+<!--                and address=#{address}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </sql>-->
+<!--    #             select  * from dbBackup-->
+<!--    #             limit  #{star},#{pageSize}-->
+    <select id="pageFind" resultType="com.kskj.pojo.DbBackup">
+
+SELECT * FROM dbBackup ORDER BY id OFFSET #{star} ROWS FETCH NEXT #{pageSize} ROWS ONLY;
+        </select>
+    <select id="FindByName" resultType="com.kskj.pojo.DbBackup">
+        select * from dbBackup where fileName=#{fileName}
+    </select>
+    <select id="queryPage" resultType="com.kskj.pojo.DbBackup">
+          SELECT * FROM dbBackup OFFSET (#{pageNum} - 1) * #{pageSize} ROWS FETCH NEXT #{pageSize} ROWS ONLY
+
+    </select>
+<!--    <select id="selectPage" resultType="com.kskj.pojo.DbBackup">-->
+<!--        select * from dbBackup ${ew.customSqlSegment}-->
+<!--    </select>-->
+
+</mapper>

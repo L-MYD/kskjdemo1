@@ -1,0 +1,40 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example:spring-bootKSKJ-WCS:jar:0.0.1-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.springframework.boot:spring-boot-starter-web:jar -> version 2.6.13 vs (?) @ line 152, column 21
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.projectlombok:lombok:jar -> duplicate declaration of version (?) @ line 179, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------------< com.example:spring-bootKSKJ-WCS >-------------------
+[INFO] Building spring-bootKSKJ-WCS 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.2.0:resources (default-resources) @ spring-bootKSKJ-WCS ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 15 resources
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ spring-bootKSKJ-WCS ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 111 source files to E:\kskjdemo1\target\classes
+[WARNING] /E:/kskjdemo1/src/main/java/com/kskj/pojo/TES/Result.java:[6,16] sun.misc.Signal是内部专用 API, 可能会在未来发行版中删除
+[WARNING] /E:/kskjdemo1/src/main/java/com/kskj/pojo/TES/Result.java:[6,16] sun.misc.Signal是内部专用 API, 可能会在未来发行版中删除
+[WARNING] /E:/kskjdemo1/src/main/java/com/kskj/pojo/TES/Result.java:[6,16] sun.misc.Signal是内部专用 API, 可能会在未来发行版中删除
+[WARNING] /E:/kskjdemo1/src/main/java/com/kskj/pojo/TES/Result.java:[6,16] sun.misc.Signal是内部专用 API, 可能会在未来发行版中删除
+[WARNING] /E:/kskjdemo1/src/main/java/com/kskj/pojo/TES/Result.java:[6,16] sun.misc.Signal是内部专用 API, 可能会在未来发行版中删除
+[INFO] /E:/kskjdemo1/src/main/java/com/kskj/service/TesService.java: 某些输入文件使用或覆盖了已过时的 API。
+[INFO] /E:/kskjdemo1/src/main/java/com/kskj/service/TesService.java: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+[INFO] /E:/kskjdemo1/src/main/java/com/kskj/service/DbBackupService.java: E:\kskjdemo1\src\main\java\com\kskj\service\DbBackupService.java使用了未经检查或不安全的操作。
+[INFO] /E:/kskjdemo1/src/main/java/com/kskj/service/DbBackupService.java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.698 s
+[INFO] Finished at: 2025-12-31T01:18:03+08:00
+[INFO] ------------------------------------------------------------------------

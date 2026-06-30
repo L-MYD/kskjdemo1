@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kskj.mapper.LocationMapper">
+    <update id="updeteStatus">
+        UPDATE wcs_locationinfo
+        SET
+            status = #{status},
+            containercode = #{containercode}
+        WHERE locationcode = #{locationcode}
+    </update>
+    <update id="updeteStatu">
+        UPDATE wcs_locationinfo
+        SET
+            status = #{status}
+        WHERE locationcode = #{locationcode}
+    </update>
+    <select id="findOneByBackup" resultType="com.kskj.pojo.LocationInfo">
+        select *
+        from wcs_locationinfo where backup=#{backup};
+    </select>
+    <select id="findOneByLocationCode" resultType="com.kskj.pojo.LocationInfo">
+        select *
+        from wcs_locationinfo where locationcode=#{locationcode};
+    </select>
+    <select id="findOneByLocationTypeAndLaneNumber" resultType="com.kskj.pojo.LocationInfo">
+select * from wcs_locationinfo where locationtype=#{locationtype} and lanenumber=#{lanenumber}
+    </select>
+    <select id="findByStatusAndLaneNumber" resultType="com.kskj.pojo.LocationInfo">
+        select * from wcs_locationinfo where status=#{status} and lanenumber=#{lanenumber}
+    </select>
+    <select id="findOneByLocationType" resultType="com.kskj.pojo.LocationInfo">
+        select *
+        from wcs_locationinfo where locationtype=#{locationtype};
+    </select>
+</mapper>

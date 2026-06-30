@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kskj.mapper.RetryMechanismMapper">
+
+    <insert id="add">
+        INSERT INTO resend_message (
+            wms_taskid,
+            wcs_taskid,
+            tes_taskid,
+            podid,
+            tkdat,
+            statu,
+            is_successfully
+        ) VALUES (
+                     #{wmsTaskid},
+                     #{wcsTaskid},
+                     #{tesTaskid},
+                     #{podid},
+                     #{tkdat},
+                     #{statu},
+                     #{isSuccessfully}
+                 )
+    </insert>
+    <update id="updete">
+        UPDATE resend_message
+        SET
+            wms_taskid = #{wmsTaskid},
+            wcs_taskid = #{wcsTaskid},
+            tes_taskid = #{tesTaskid},
+            podid = #{podid},
+            tkdat = #{tkdat},
+            statu = #{statu},
+            is_successfully = #{isSuccessfully}
+        WHERE id = #{id}
+    </update>
+    <select id="findAll" resultType="com.kskj.pojo.ResendMessage">
+        SELECT * FROM resend_message WHERE is_successfully = #{issuccess}
+    </select>
+</mapper>

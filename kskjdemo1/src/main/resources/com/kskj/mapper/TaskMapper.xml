@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kskj.mapper.TaskMapper">
+    <insert id="add">
+        INSERT INTO wcs_taskinfo (
+            WCSTaskId,
+            WMSTaskId,
+            ThirdPartyTaskId,
+            TaskType,
+            ContainerCode,
+            StartPosition,
+            AGVCode,
+            TargetPosition,
+            TaskStatus,
+            Progress,
+            RcsOrTes,
+            TaskCreaTime,
+            TaskCompletionTime,
+            Priority,
+            Track
+        ) VALUES (
+                     #{WCSTaskId},
+                     #{WMSTaskId},
+                     #{ThirdPartyTaskId},
+                     #{TaskType},
+                     #{ContainerCode},
+                     #{StartPosition},
+                     #{AGVCode},
+                     #{TargetPosition},
+                     #{TaskStatus},
+                     #{Progress},
+                     #{RcsOrTes},
+                     #{TaskCreaTime},
+                     #{TaskCompletionTime},
+                     #{Priority},
+                     #{Track}
+                 )
+    </insert>
+    <update id="updete">
+        UPDATE wcs_taskinfo
+        SET
+            WCSTaskId = #{WCSTaskId},
+            WMSTaskId = #{WMSTaskId},
+            ThirdPartyTaskId = #{ThirdPartyTaskId},
+            TaskType = #{TaskType},
+            ContainerCode = #{ContainerCode},
+            StartPosition = #{StartPosition},
+            AGVCode = #{AGVCode},
+            TargetPosition = #{TargetPosition},
+            TaskStatus = #{TaskStatus},
+            Progress = #{Progress},
+            RcsOrTes = #{RcsOrTes},
+            TaskCreaTime = #{TaskCreaTime},
+            TaskCompletionTime = #{TaskCompletionTime},
+            Priority = #{Priority}
+        WHERE ThirdPartyTaskId = #{ThirdPartyTaskId}
+    </update>
+    <update id="updetet">
+        UPDATE wcs_taskinfo
+        SET
+            WCSTaskId = #{WCSTaskId},
+            WMSTaskId = #{WMSTaskId},
+            ThirdPartyTaskId = #{ThirdPartyTaskId},
+            TaskType = #{TaskType},
+            ContainerCode = #{ContainerCode},
+            StartPosition = #{StartPosition},
+            AGVCode = #{AGVCode},
+            TargetPosition = #{TargetPosition},
+            TaskStatus = #{TaskStatus},
+            Progress = #{Progress},
+            RcsOrTes = #{RcsOrTes},
+            TaskCreaTime = #{TaskCreaTime},
+            TaskCompletionTime = #{TaskCompletionTime},
+            Priority = #{Priority}
+        WHERE WCSTaskId = #{WCSTaskId}
+    </update>
+    <update id="updeteStaus">
+        UPDATE wcs_taskinfo
+        SET
+            WCSTaskId = #{WCSTaskId},
+            WMSTaskId = #{WMSTaskId},
+            ThirdPartyTaskId = #{ThirdPartyTaskId},
+            TaskType = #{TaskType},
+            ContainerCode = #{ContainerCode},
+            StartPosition = #{StartPosition},
+            AGVCode = #{AGVCode},
+            TargetPosition = #{TargetPosition},
+            TaskStatus = #{TaskStatus},
+            Progress = #{Progress},
+            RcsOrTes = #{RcsOrTes},
+            TaskCreaTime = #{TaskCreaTime},
+            TaskCompletionTime = #{TaskCompletionTime},
+            Priority = #{Priority},
+            Track = #{Track}
+        WHERE WCSTaskId = #{WCSTaskId}
+    </update>
+    <update id="updeteTwo">
+        UPDATE wcs_taskinfo
+        SET
+            WCSTaskId = #{WCSTaskId},
+            WMSTaskId = #{WMSTaskId},
+            ThirdPartyTaskId = #{ThirdPartyTaskId},
+            TaskType = #{TaskType},
+            ContainerCode = #{ContainerCode},
+            StartPosition = #{StartPosition},
+            AGVCode = #{AGVCode},
+            TargetPosition = #{TargetPosition},
+            TaskStatus = #{TaskStatus},
+            Progress = #{Progress},
+            RcsOrTes = #{RcsOrTes},
+            TaskCreaTime = #{TaskCreaTime},
+            TaskCompletionTime = #{TaskCompletionTime},
+            Priority = #{Priority},
+            Track = #{Track}
+        WHERE WCSTaskId = #{WCSTaskId}
+    </update>
+    <delete id="delete">
+
+    </delete>
+
+    <select id="findAll" resultType="com.kskj.pojo.WmsWcsTaskInfo"></select>
+    <select id="findOne" resultType="com.kskj.pojo.WmsWcsTaskInfo">
+        SELECT *
+        FROM wcs_taskinfo
+        WHERE ThirdPartyTaskId = #{ThirdPartyTaskId}
+    </select>
+    <select id="findOneByThirdPartyTaskIdAndRcsOrTes" resultType="com.kskj.pojo.WmsWcsTaskInfo">
+        SELECT *
+        FROM wcs_taskinfo
+        WHERE ThirdPartyTaskId = #{ThirdPartyTaskId} and RcsOrTes=#{RcsOrTes}
+    </select>
+    <select id="findOneByWcstaskId" resultType="com.kskj.pojo.WmsWcsTaskInfo" parameterType="java.lang.String">
+        SELECT *
+        FROM wcs_taskinfo
+        WHERE WCSTaskId = #{WCSTaskId}
+    </select>
+    <select id="findByTaskStatus" resultType="com.kskj.pojo.WmsWcsTaskInfo">
+        select * from wcs_taskinfo where TaskStatus=#{TaskStatus}
+    </select>
+    <select id="findParentTasksWithPendingChildren" resultType="com.kskj.pojo.WmsWcsTaskInfo">
+        SELECT DISTINCT p.*
+        FROM wcs_taskinfo p
+                 INNER JOIN wcs_taskinfo c ON p.WCSTaskId = c.Progress
+        WHERE c.TaskStatus = 'PENDING'
+          AND p.TaskStatus != 'COMPLETED'
+        ORDER BY p.Priority DESC, p.TaskCreaTime ASC
+    </select>
+    <select id="findParentTasksByIds" resultType="com.kskj.pojo.WmsWcsTaskInfo">
+        SELECT * FROM wcs_taskinfo
+        WHERE WCSTaskId IN
+        <foreach collection="parentIds" item="parentId" open="(" close=")" separator=",">
+            #{parentId}
+        </foreach>
+        AND (Progress IS NULL OR Progress = '')
+    </select>
+    <select id="findChildTasksByParentIds" resultType="com.kskj.pojo.WmsWcsTaskInfo">
+        SELECT * FROM wcs_taskinfo
+        WHERE Progress IN
+        <foreach collection="parentIds" item="parentId" open="(" close=")" separator=",">
+            #{parentId}
+        </foreach>
+    </select>
+    <select id="findByTaskStatusAndTaskType" resultType="com.kskj.pojo.WmsWcsTaskInfo">
+        select * from wcs_taskinfo where TaskStatus=#{taskStatus} and TaskType=#{taskType} and RcsOrTes=#{rcsOrTes}
+    </select>
+    <select id="findByProgress" resultType="com.kskj.pojo.WmsWcsTaskInfo">
+        select * from wcs_taskinfo where Progress=#{Progress}
+    </select>
+    <select id="findByTaskStatusAndTaskTypeA" resultType="com.kskj.pojo.WmsWcsTaskInfo">
+        SELECT * FROM wcs_taskinfo
+        WHERE TaskStatus = #{taskStatus}
+          AND TaskType = #{taskType}
+          AND RcsOrTes = #{rcsOrTes}
+          AND Track IS NOT NULL
+          AND Track != ''
+    </select>
+
+    <select id="findByTaskStatusAndTaskTypeAb" resultType="com.kskj.pojo.WmsWcsTaskInfo">
+        SELECT * FROM wcs_taskinfo
+        WHERE Track IS NOT NULL
+          AND Track != ''
+          AND TaskStatus != 'completed'
+          AND TaskStatus != 'pending'
+          AND TaskType = #{taskType}
+          AND RcsOrTes = #{rcsOrTes}
+    </select>
+
+
+</mapper>

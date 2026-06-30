@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kskj.mapper.PsMapper">
+    <update id="updete">
+            UPDATE `wcs_psinfo-tes`
+            SET
+                currenttaskid = #{currenttaskid}
+            WHERE id = #{id}
+    </update>
+    <select id="findoneByRobotID" resultType="com.kskj.pojo.PSInfo">
+        select * from `wcs_psinfo-tes` where psname=#{psname}
+    </select>
+</mapper>
