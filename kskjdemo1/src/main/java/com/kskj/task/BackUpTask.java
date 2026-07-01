@@ -644,6 +644,9 @@ public class BackUpTask {
                                 //需要再去上一遍架
                                 Bind bind = new Bind();
                                 String startPosition = executableTask.getStartPosition();
+                                if(startPosition.equals("YR-T2")){
+                                    startPosition = "YR-T1";
+                                }
                                 String containerCode = executableTask.getContainerCode();
                                 bind.setCarrierCode(containerCode);//设置载具号
                                 bind.setSiteCode(startPosition);//设置站点号
@@ -709,6 +712,9 @@ public class BackUpTask {
                             //需要再去上一遍架
                             Bind bind = new Bind();
                             String startPosition = executableTask.getStartPosition();
+                            if(startPosition.equals("YR-T2")){
+                                    startPosition = "YR-T1";
+                            }
                             String containerCode = executableTask.getContainerCode();
                             bind.setCarrierCode(containerCode);//设置载具号
                             bind.setSiteCode(startPosition);//设置站点号

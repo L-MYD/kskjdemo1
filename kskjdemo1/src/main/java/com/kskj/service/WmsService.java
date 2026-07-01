@@ -372,7 +372,7 @@ public class WmsService implements IWmsService {
             //直接创建定时任务来查询这些任务是不是要好一些。
             //创建完成之后就需要去创建我们的子任务了
             //这里需要判断起始目的地是待灭菌缓存区还是灭菌缓存区，待灭菌缓存区需要下发子任务去短程提升机，灭菌缓存区直接去灭菌柜
-            if (wmsWcsTaskInfo.getStartPosition()=="") {
+            if (wmsWcsTaskInfo.getStartPosition().equals("")) {
                 //灭菌区入灭菌柜
                 //TODO:子任务1：
                 wmsWcsTaskInfoKido.setWCSTaskId("WCS" + String.valueOf(IdUtil.createSnowflake(1, 1).nextId()));//生成一个WCS开头的8位数字唯一id(雪花算法)
@@ -422,7 +422,7 @@ public class WmsService implements IWmsService {
                 wmsWcsTaskInfoKidr.setWCSTaskId("WCS" + String.valueOf(IdUtil.createSnowflake(1, 1).nextId()));//生成一个WCS开头的8位数字唯一id(雪花算法)
                 wmsWcsTaskInfoKidr.setContainerCode(palno);//设置容器号
                 //起始位需要为当前位
-                wmsWcsTaskInfoKidr.setStartPosition("YR-T1");//设置起始位，提升机
+                wmsWcsTaskInfoKidr.setStartPosition("YR-T2");//设置起始位，提升机
                 //目标位为接驳口位
                 wmsWcsTaskInfoKidr.setTargetPosition(toLocation);//设置目标地，灭菌柜
                 wmsWcsTaskInfoKidr.setTaskStatus("pending");//设置初始任务状态
@@ -877,7 +877,7 @@ public class WmsService implements IWmsService {
                 wmsWcsTaskInfoKidr.setWCSTaskId("WCS" + String.valueOf(IdUtil.createSnowflake(1, 1).nextId()));//生成一个WCS开头的8位数字唯一id(雪花算法)
                 wmsWcsTaskInfoKidr.setContainerCode(palno);//设置容器号
                 //起始位需要为当前位
-                wmsWcsTaskInfoKidr.setStartPosition("YR-T1");//设置起始位，提升机
+                wmsWcsTaskInfoKidr.setStartPosition("YR-T2");//设置起始位，提升机高位
                 //目标位为接驳口位
                 wmsWcsTaskInfoKidr.setTargetPosition(toLocation);//设置目标地，灭菌缓存区储位
                 wmsWcsTaskInfoKidr.setTaskStatus("pending");//设置初始任务状态

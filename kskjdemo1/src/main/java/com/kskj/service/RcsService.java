@@ -330,6 +330,19 @@ public class RcsService  implements IRcsService {
                                     plcSendMes.setReasonCode("00000000");
                                     plcSendMesMapper.add(plcSendMes);
                                     break;
+                                case"YR-T1":
+                                    plcSendMes.setPlcIp("192.168.30.110");
+                                    plcSendMes.setDbData("4");
+                                    plcSendMes.setMessType("CL");
+                                    plcSendMes.setUnitID(rcs.getContainerCode() + "************");
+                                    plcSendMes.setFromLocation("1601");
+                                    plcSendMes.setToLocation("1601");
+                                    plcSendMes.setCanWrite("01");
+                                    plcSendMes.setUnitHigh("0000");
+                                    plcSendMes.setUnitWeigh("000000");
+                                    plcSendMes.setReasonCode("00000000");
+                                    plcSendMesMapper.add(plcSendMes);
+                                    break;
                                 default:
                                     break;
                             }
@@ -358,12 +371,12 @@ public class RcsService  implements IRcsService {
                                    break;
                                case"FH-T1":
                                     //目的地是发货区提升机，给PLC下发TO指令从一楼搬运到二楼
-                                   plcSendMes6.setPlcIp("192.168.30.80");
+                                   plcSendMes6.setPlcIp("192.168.30.110");
                                    plcSendMes6.setDbData("4");
                                    plcSendMes6.setMessType("TO");
                                    plcSendMes6.setUnitID(rcs.getContainerCode() + "************");
-                                   plcSendMes6.setFromLocation("1301");
-                                   plcSendMes6.setToLocation("1304");
+                                   plcSendMes6.setFromLocation("1201");
+                                   plcSendMes6.setToLocation("1203");
                                    plcSendMes6.setCanWrite("01");
                                    plcSendMes6.setUnitHigh("0000");
                                    plcSendMes6.setUnitWeigh("000000");
