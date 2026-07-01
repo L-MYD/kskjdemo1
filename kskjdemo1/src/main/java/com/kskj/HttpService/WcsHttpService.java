@@ -17,7 +17,7 @@ public class WcsHttpService {
     private RestTemplate restTemplate; // 注入Spring管理的RestTemplate
     private static final String url1 = "http://localhost:44338/api/task/addTask";//为wcs-api将新建的任务传递给我们页面端
     private static final String url2 = "http://localhost:44338/api/task/carTask";//任务开始执行时，将载具对应的任务发送我们页面端
-    private static final String url3 = "http://localhost:44338/api/Wakeup/plc";//任务结束时，将下发灭菌区提升机的指令发给PLC接口
+    private static final String url3 = "http://localhost:44376/api/Wakeup/plcapi";//任务结束时，将下发灭菌区提升机的指令发给PLC接口
     //此方法为向wcs页面发送任务的数据接口。
     //此方法的用的地方为，wms新建任务完成之后，我们向tes或Rcs创建任务之后，将这些数据传入页面端
     public void applyLocation(ApiTask apiTask) {
