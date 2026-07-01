@@ -260,7 +260,7 @@ public class WmsService implements IWmsService {
         }
     }
     /**
-     * 此方法为入待灭菌区任务创建------02
+     * 此方法为入待灭菌区任务创建------02 nan
      */
     private WmsTaskReponse executeSterilizationBufferTask(WmsTask wmsTask) {
         try {
@@ -338,7 +338,7 @@ public class WmsService implements IWmsService {
         }
     }
     /**
-     * 此方法为灭菌任务任务创建------03
+     * 此方法为灭菌任务任务创建------03 nan
      */
     private WmsTaskReponse executeSterilizationTask(WmsTask wmsTask) {
         try {
@@ -812,7 +812,7 @@ public class WmsService implements IWmsService {
     }
 
     /**
-     * 此方法为待灭菌缓存区入灭菌缓存区任务任务创建------07
+     * 此方法为待灭菌缓存区入灭菌缓存区任务任务创建------07 nan
      */
     private WmsTaskReponse executeSterilizationTask2(WmsTask wmsTask) {
         try {
