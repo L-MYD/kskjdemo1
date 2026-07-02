@@ -300,7 +300,7 @@ public class WmsService implements IWmsService {
             wmsWcsTaskInfoKido.setTargetPosition("FH-T1");//设置目标地
             wmsWcsTaskInfoKido.setTaskStatus("pending");//设置初始任务状态
             wmsWcsTaskInfoKido.setTaskType("入待灭菌区子任务1");//设置任务类型         
-            wmsWcsTaskInfoFa.setRcsOrTes("RCS");
+            wmsWcsTaskInfoKido.setRcsOrTes("RCS");
             wmsWcsTaskInfoKido.setPriority(num);//设置优先级
             wmsWcsTaskInfoKido.setProgress(wcsid);//设置父任务的wcsid
             wmsWcsTaskInfoKido.setTaskCreaTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));//设置任务创建时间
@@ -328,7 +328,7 @@ public class WmsService implements IWmsService {
             wmsWcsTaskInfoKidr.setTargetPosition(toLocation);//设置目标地
             wmsWcsTaskInfoKidr.setTaskStatus("pending");//设置初始任务状态
             wmsWcsTaskInfoKidr.setTaskType("入待灭菌区子任务2");//设置任务类型         
-            wmsWcsTaskInfoFa.setRcsOrTes("RCS");
+            wmsWcsTaskInfoKidr.setRcsOrTes("RCS");
             wmsWcsTaskInfoKidr.setPriority(num);//设置优先级
             wmsWcsTaskInfoKidr.setProgress(wcsid);//设置父任务的wcsid
             wmsWcsTaskInfoKidr.setTaskCreaTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));//设置任务创建时间
@@ -368,7 +368,7 @@ public class WmsService implements IWmsService {
             wmsWcsTaskInfo.setTargetPosition(toLocation);//设置目标地
             wmsWcsTaskInfo.setTaskStatus("pending");//设置初始任务状态
             wmsWcsTaskInfo.setTaskType("灭菌任务");//设置任务类型         
-            wmsWcsTaskInfoFa.setRcsOrTes("RCS");
+            wmsWcsTaskInfo.setRcsOrTes("RCS");
             wmsWcsTaskInfo.setPriority(num);//设置优先级
             wmsWcsTaskInfo.setTaskCreaTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));//设置任务创建时间
             //最后将这个主任务创建到数据库
@@ -798,7 +798,7 @@ public class WmsService implements IWmsService {
             wmsWcsTaskInfo.setTargetPosition(toLocation);//设置目标地
             wmsWcsTaskInfo.setTaskStatus("pending");//设置初始任务状态
             wmsWcsTaskInfo.setTaskType("待灭菌出发任务");//设置任务类型         
-            wmsWcsTaskInfoFa.setRcsOrTes("RCS");
+            wmsWcsTaskInfo.setRcsOrTes("RCS");
             wmsWcsTaskInfo.setPriority(num);//设置优先级
             wmsWcsTaskInfo.setTaskCreaTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));//设置任务创建时间
             //最后将这个主任务创建到数据库
@@ -816,7 +816,7 @@ public class WmsService implements IWmsService {
                 wmsWcsTaskInfoKido.setTargetPosition("YR-T1");//设置目标地
                 wmsWcsTaskInfoKido.setTaskStatus("pending");//设置初始任务状态
                 wmsWcsTaskInfoKido.setTaskType("待灭菌出发子任务1");//设置任务类型                
-                wmsWcsTaskInfoFa.setRcsOrTes("RCS");
+                wmsWcsTaskInfoKido.setRcsOrTes("RCS");
                 wmsWcsTaskInfoKido.setPriority(num);//设置优先级
                 wmsWcsTaskInfoKido.setProgress(wcsid);//设置父任务的wcsid
                 wmsWcsTaskInfoKido.setTaskCreaTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));//设置任务创建时间
@@ -843,7 +843,7 @@ public class WmsService implements IWmsService {
                 wmsWcsTaskInfoKidr.setTargetPosition(toLocation);//设置目标地，灭菌缓存区储位
                 wmsWcsTaskInfoKidr.setTaskStatus("pending");//设置初始任务状态
                 wmsWcsTaskInfoKidr.setTaskType("待灭菌出发子任务2");//设置任务类型                
-                wmsWcsTaskInfoFa.setRcsOrTes("RCS");
+                wmsWcsTaskInfoKidr.setRcsOrTes("RCS");
                 wmsWcsTaskInfoKidr.setPriority(num);//设置优先级
                 wmsWcsTaskInfoKidr.setProgress(wcsid);//设置父任务的wcsid
                 wmsWcsTaskInfoKidr.setTaskCreaTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));//设置任务创建时间
