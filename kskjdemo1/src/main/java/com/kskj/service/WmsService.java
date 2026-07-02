@@ -371,8 +371,6 @@ public class WmsService implements IWmsService {
             taskMapper.add(wmsWcsTaskInfo);
             //直接创建定时任务来查询这些任务是不是要好一些。
             //创建完成之后就需要去创建我们的子任务了
-            //这里需要判断起始目的地是待灭菌缓存区还是灭菌缓存区，待灭菌缓存区需要下发子任务去短程提升机，灭菌缓存区直接去灭菌柜
-            if (wmsWcsTaskInfo.getStartPosition().equals("")) {
                 //灭菌区入灭菌柜
                 //TODO:子任务1：
                 wmsWcsTaskInfoKido.setWCSTaskId("WCS" + String.valueOf(IdUtil.createSnowflake(1, 1).nextId()));//生成一个WCS开头的8位数字唯一id(雪花算法)
@@ -388,50 +386,6 @@ public class WmsService implements IWmsService {
                 wmsWcsTaskInfoKido.setProgress(wcsid);//设置父任务的wcsid
                 wmsWcsTaskInfoKido.setTaskCreaTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));//设置任务创建时间
                 taskMapper.add(wmsWcsTaskInfoKido);
-            }
-            else{
-                //待灭菌区直接入灭菌柜，需要拆分两条任务，使用短程提升机            
-                //TODO:子任务1：
-                wmsWcsTaskInfoKido.setWCSTaskId("WCS" + String.valueOf(IdUtil.createSnowflake(1, 1).nextId()));//生成一个WCS开头的8位数字唯一id(雪花算法)
-                //子任务不需要wmsid
-                wmsWcsTaskInfoKido.setContainerCode(palno);//设置容器号
-                //起始位需要为当前位
-                wmsWcsTaskInfoKido.setStartPosition(fromLocation);//设置起始位
-                //目标位为接驳口位
-                wmsWcsTaskInfoKido.setTargetPosition("YR-T1");//设置目标地
-                wmsWcsTaskInfoKido.setTaskStatus("pending");//设置初始任务状态
-                wmsWcsTaskInfoKido.setTaskType("灭菌子任务1");//设置任务类型
-                wmsWcsTaskInfoKido.setPriority(num);//设置优先级
-                wmsWcsTaskInfoKido.setProgress(wcsid);//设置父任务的wcsid
-                wmsWcsTaskInfoKido.setTaskCreaTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));//设置任务创建时间
-                taskMapper.add(wmsWcsTaskInfoKido);
-                // //TODO:子任务2：
-                // wmsWcsTaskInfoKidt.setWCSTaskId("WCS" + String.valueOf(IdUtil.createSnowflake(1, 1).nextId()));//生成一个WCS开头的8位数字唯一id(雪花算法)
-                // wmsWcsTaskInfoKidt.setContainerCode(palno);//设置容器号
-                // //起始位需要为当前位
-                // wmsWcsTaskInfoKidt.setStartPosition("1062122AA555155");//设置起始位
-                // //目标位为接驳口位
-                // wmsWcsTaskInfoKidt.setTargetPosition("1062122AA555166");//设置目标地
-                // wmsWcsTaskInfoKidt.setTaskStatus("pending");//设置初始任务状态
-                // wmsWcsTaskInfoKidt.setTaskType("灭菌子任务2");//设置任务类型
-                // wmsWcsTaskInfoKidt.setPriority(num);//设置优先级
-                // wmsWcsTaskInfoKidt.setProgress(wcsid);//设置父任务的wcsid
-                // wmsWcsTaskInfoKidt.setTaskCreaTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));//设置任务创建时间
-                // taskMapper.add(wmsWcsTaskInfoKidt);
-                //TODO:子任务2：
-                wmsWcsTaskInfoKidr.setWCSTaskId("WCS" + String.valueOf(IdUtil.createSnowflake(1, 1).nextId()));//生成一个WCS开头的8位数字唯一id(雪花算法)
-                wmsWcsTaskInfoKidr.setContainerCode(palno);//设置容器号
-                //起始位需要为当前位
-                wmsWcsTaskInfoKidr.setStartPosition("YR-T2");//设置起始位，提升机
-                //目标位为接驳口位
-                wmsWcsTaskInfoKidr.setTargetPosition(toLocation);//设置目标地，灭菌柜
-                wmsWcsTaskInfoKidr.setTaskStatus("pending");//设置初始任务状态
-                wmsWcsTaskInfoKidr.setTaskType("灭菌子任务2");//设置任务类型
-                wmsWcsTaskInfoKidr.setPriority(num);//设置优先级
-                wmsWcsTaskInfoKidr.setProgress(wcsid);//设置父任务的wcsid
-                wmsWcsTaskInfoKidr.setTaskCreaTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));//设置任务创建时间
-                taskMapper.add(wmsWcsTaskInfoKidr);
-            }
 
             return new WmsTaskReponse("S", "灭菌任务处理成功", wmsTask.getWmsId());
         } catch (Exception e) {
@@ -881,7 +835,7 @@ public class WmsService implements IWmsService {
                 //目标位为接驳口位
                 wmsWcsTaskInfoKidr.setTargetPosition(toLocation);//设置目标地，灭菌缓存区储位
                 wmsWcsTaskInfoKidr.setTaskStatus("pending");//设置初始任务状态
-                wmsWcsTaskInfoKidr.setTaskType("入灭菌缓存区子任务2");//设置任务类型
+                wmsWcsTaskInfoKidr.setTaskType("待灭菌出发子任务2");//设置任务类型
                 wmsWcsTaskInfoKidr.setPriority(num);//设置优先级
                 wmsWcsTaskInfoKidr.setProgress(wcsid);//设置父任务的wcsid
                 wmsWcsTaskInfoKidr.setTaskCreaTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));//设置任务创建时间
