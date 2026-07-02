@@ -19,9 +19,10 @@ public class TaskConfig {
 //        System.out.println("\n=== TaskConfig 硬编码配置初始化 ===");
 
         maxSubTasks.put("入成品库任务", 3);
-        maxSubTasks.put("入待灭菌区任务", 3);
+        maxSubTasks.put("入待灭菌区任务", 2);
         maxSubTasks.put("入解析区任务", 2);
-        maxSubTasks.put("灭菌任务", 3);
+        maxSubTasks.put("灭菌任务", 1);
+        maxSubTasks.put("待灭菌出发任务", 2);
 
         // 可以在这里添加更多配置
         // maxSubTasks.put("出库任务", 2);

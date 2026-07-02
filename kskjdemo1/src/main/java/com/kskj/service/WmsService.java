@@ -172,7 +172,7 @@ public class WmsService implements IWmsService {
                 // AGV系统任务
                 return executeAgvSystemTask(wmsTask);
             case "07":
-                // 带灭菌缓存区去灭菌区任务
+                // 过短程提升机带灭菌缓存区起始地任务
                 return executeSterilizationTask2(wmsTask);
             default:
                 return new WmsTaskReponse("F", "未知的任务类型: " + wmsTask.getTaskType(), "0");
@@ -838,7 +838,7 @@ public class WmsService implements IWmsService {
             wmsWcsTaskInfo.setStartPosition(fromLocation);//设置起始位
             wmsWcsTaskInfo.setTargetPosition(toLocation);//设置目标地
             wmsWcsTaskInfo.setTaskStatus("pending");//设置初始任务状态
-            wmsWcsTaskInfo.setTaskType("灭菌任务");//设置任务类型
+            wmsWcsTaskInfo.setTaskType("待灭菌出发任务");//设置任务类型
             wmsWcsTaskInfo.setPriority(num);//设置优先级
             wmsWcsTaskInfo.setTaskCreaTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));//设置任务创建时间
             //最后将这个主任务创建到数据库
@@ -855,7 +855,7 @@ public class WmsService implements IWmsService {
                 //目标位为接驳口位
                 wmsWcsTaskInfoKido.setTargetPosition("YR-T1");//设置目标地
                 wmsWcsTaskInfoKido.setTaskStatus("pending");//设置初始任务状态
-                wmsWcsTaskInfoKido.setTaskType("入灭菌缓存区子任务1");//设置任务类型
+                wmsWcsTaskInfoKido.setTaskType("待灭菌出发子任务1");//设置任务类型
                 wmsWcsTaskInfoKido.setPriority(num);//设置优先级
                 wmsWcsTaskInfoKido.setProgress(wcsid);//设置父任务的wcsid
                 wmsWcsTaskInfoKido.setTaskCreaTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));//设置任务创建时间
